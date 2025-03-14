@@ -1,0 +1,140 @@
+<section id="book">
+    <!-- pooja-booking.component.html -->
+    <div class="w-full min-h-screen md:min-h-fit bg-gray-50 p-4 flex items-center justify-center">
+        <div class="w-full max-w-lg mx-auto bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg border border-gray-200">
+            <h2 class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-4 sm:mb-6">Pooja Booking Form</h2>
+
+            <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="space-y-4 sm:space-y-5">
+                <!-- Name Field -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name <span
+                            class="text-red-500">*</span></label>
+                    <input type="text" id="name" formControlName="name" placeholder="Enter your full name"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm sm:text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('name')?.touched && bookingForm.get('name')?.invalid">
+                        Name is required
+                    </div>
+                </div>
+
+                <!-- Address Field -->
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address <span
+                            class="text-red-500">*</span></label>
+                    <textarea id="address" formControlName="address" placeholder="Enter your address"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm sm:text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 h-20 sm:h-24 transition-all duration-200"></textarea>
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('address')?.touched && bookingForm.get('address')?.invalid">
+                        Address is required
+                    </div>
+                </div>
+
+                <!-- Date of Pooja Field -->
+                <div>
+                    <label for="poojaDate" class="block text-sm font-medium text-gray-700 mb-1">Date of Pooja <span
+                            class="text-red-500">*</span></label>
+                    <input type="date" id="poojaDate" formControlName="poojaDate" [min]="minDate"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm sm:text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('poojaDate')?.touched && bookingForm.get('poojaDate')?.invalid">
+                        Date is required
+                    </div>
+                </div>
+
+                <!-- Type of Pooja Field -->
+                <div>
+                    <label for="poojaType" class="block text-sm font-medium text-gray-700 mb-1">Pooja Type <span
+                            class="text-red-500">*</span></label>
+                    <input type="text" id="poojaType" formControlName="poojaType" placeholder="Enter pooja type"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm sm:text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('poojaType')?.touched && bookingForm.get('poojaType')?.invalid">
+                        Pooja Type is required
+                    </div>
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email ID <span
+                            class="text-red-500">*</span></label>
+                    <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm sm:text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('email')?.touched && bookingForm.get('email')?.errors?.['required']">
+                        Email is required
+                    </div>
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('email')?.touched && bookingForm.get('email')?.errors?.['email']">
+                        Please enter a valid email
+                    </div>
+                </div>
+
+                <!-- Phone Field -->
+                <div>
+                    <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number <span
+                            class="text-red-500">*</span></label>
+                    <input type="tel" id="phoneNumber" formControlName="phoneNumber"
+                        placeholder="Enter your 10-digit phone number"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm sm:text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('phoneNumber')?.touched && bookingForm.get('phoneNumber')?.errors?.['required']">
+                        Phone number is required
+                    </div>
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('phoneNumber')?.touched && bookingForm.get('phoneNumber')?.errors?.['pattern']">
+                        Please enter a valid 10-digit phone number
+                    </div>
+                </div>
+
+                <!-- Pooja Samagri Options -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Pooja Samagri <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-2 sm:space-y-0">
+                        <div class="flex items-center">
+                            <input type="radio" id="withSamagri" value="With Samagri" formControlName="samagriOption"
+                                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 cursor-pointer">
+                            <label for="withSamagri" class="ml-2 block text-sm text-gray-700 cursor-pointer">
+                                With Pooja Samagri
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="withoutSamagri" value="Without Samagri"
+                                formControlName="samagriOption"
+                                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 cursor-pointer">
+                            <label for="withoutSamagri" class="ml-2 block text-sm text-gray-700 cursor-pointer">
+                                Without Pooja Samagri
+                            </label>
+                        </div>
+                    </div>
+                    <div class="text-red-500 text-xs mt-1"
+                        *ngIf="bookingForm.get('samagriOption')?.touched && bookingForm.get('samagriOption')?.invalid">
+                        Please select an option
+                    </div>
+                </div>
+
+
+                <!-- Submit Button -->
+                <div class="pt-2 sm:pt-4 flex justify-center">
+                    <button type="submit" [disabled]="bookingForm.invalid || isSubmitting"
+                        class="w-full sm:w-auto px-6 py-3 bg-indigo-600 text-white text-sm sm:text-base font-medium rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-indigo-400 flex items-center justify-center">
+                        <span *ngIf="!isSubmitting">Submit Booking</span>
+                        <div *ngIf="isSubmitting" class="flex items-center">
+                            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4">
+                                </circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                            <span>Processing...</span>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

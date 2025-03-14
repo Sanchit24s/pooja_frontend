@@ -1,0 +1,68 @@
+/* Custom CSS overrides for About section */
+.about-layout-row {
+  display: flex;
+  flex-direction: column; /* Column by default (mobile) */
+}
+
+.about-half-width {
+  width: 100%; /* Full width on mobile */
+}
+
+.about-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Center text on mobile */
+@media (max-width: 768px) {
+  .description-container p {
+    text-align: center; /* Center text on mobile */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    width: 100%; /* Use 100% instead of 90vw to prevent overflow */
+    margin-bottom: 1rem !important;
+  }
+
+  /* Center the "Discover Our Spiritual Services" button */
+  #about a.inline-block {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: fit-content;
+  }
+
+  /* Center the heading and orange line */
+  #about h2 {
+    text-align: center;
+  }
+
+  #about .h-1 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Switch to row layout on tablet/desktop */
+@media (min-width: 769px) {
+  .about-layout-row {
+    flex-direction: row;
+  }
+
+  .about-half-width {
+    width: 50%;
+  }
+
+  .description-container p {
+    text-align: justify;
+  }
+}
+
+/* Remove the problematic overflow rule */
+@media (max-width: 768px) {
+  .description-container p:nth-of-type(3) {
+    width: 100%; /* Changed from 90vw */
+    display: block;
+    margin: 0 0 1rem 0 !important; /* Fixed margin format */
+    padding: 0; /* Simplified padding */
+  }
+}

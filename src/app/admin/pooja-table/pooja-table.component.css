@@ -1,0 +1,11 @@
+/* Hide the horizontal scrollbar */
+.overflow-x-auto {
+  overflow-x: auto;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}

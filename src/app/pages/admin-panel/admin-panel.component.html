@@ -1,0 +1,10 @@
+<div class="admin-container">
+    <app-admin-header (toggleSidebar)="toggleSidebar()"></app-admin-header>
+    <div class="content-container">
+        <div class="sidebar-backdrop" [ngClass]="{'open': isSidebarOpen}" (click)="toggleSidebar()"></div>
+        <app-sidebar [ngClass]="{'open': isSidebarOpen}"></app-sidebar>
+        <div class="main-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

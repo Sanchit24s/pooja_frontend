@@ -1,0 +1,193 @@
+/* ritual-categories.component.scss */
+:host {
+  display: block;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+// Hide scrollbar but keep functionality
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+}
+
+// Card hover effects
+.shadow-md {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Enhance accessibility
+.cursor-pointer {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #4299e1;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+// Category card styling
+.category-card {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    transition: height 0.3s ease;
+  }
+
+  &:hover::after {
+    height: 60%;
+  }
+}
+
+// Custom focus states
+button,
+[role="button"] {
+  &:focus-visible {
+    outline: 2px solid #4299e1;
+    outline-offset: 2px;
+  }
+}
+
+// Add a subtle pattern background
+.bg-pattern {
+  background-color: #f9fafb;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+// Hero section styling
+.hero-bg {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("/assets/images/bg-pattern.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ritual-categories.component.scss */
+:host {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+// Improve the scrollbar for the horizontal scroll
+.overflow-x-auto {
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.overflow-x-auto {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+// Card hover effects
+.shadow-md {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Enhance accessibility
+.cursor-pointer {
+  &:focus {
+    outline: 2px solid #4299e1;
+    outline-offset: 2px;
+  }
+}

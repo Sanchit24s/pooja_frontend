@@ -1,0 +1,108 @@
+<app-category-header></app-category-header>
+
+<div class="container mx-auto px-4 py-8 mt-14">
+    <!-- Back button and header -->
+    <div class="flex items-center mb-8">
+        <button (click)="goBack()"
+            class="text-blue-600 hover:text-blue-800 mr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded p-1 transition-colors duration-200"
+            aria-label="Go back">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </button>
+        <h1 class="text-3xl font-bold text-gray-800">{{selectedCategory ? selectedCategory.name : 'Hindu Rituals &
+            Ceremonies'}}</h1>
+    </div>
+
+    <!-- Categories Navigation -->
+    <div class="mb-10">
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Categories</h2>
+        <div class="overflow-x-auto pb-2 hide-scrollbar">
+            <div class="flex gap-4 pb-2">
+                <div *ngFor="let category of categories" (click)="selectCategory(category)"
+                    class="min-w-[200px] rounded-xl overflow-hidden shadow-md flex-shrink-0 cursor-pointer transition-all duration-300 border border-gray-200"
+                    [ngClass]="{'ring-2 ring-blue-500 transform scale-105 border-blue-300': selectedCategory?.id === category.id}"
+                    tabindex="0" (keydown.enter)="selectCategory(category)" role="button"
+                    [attr.aria-pressed]="selectedCategory?.id === category.id">
+                    <div class="relative h-36">
+                        <img [src]="category.image" [alt]="category.name" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
+                            <h3 class="text-lg font-semibold text-white p-4">{{ category.name }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Selected Category Description -->
+    <div *ngIf="selectedCategory" class="mb-8 animate-fadeIn">
+        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 shadow-sm">
+            <h2 class="text-xl font-semibold mb-2 text-blue-800">About {{ selectedCategory.name }}</h2>
+            <p class="text-gray-700 leading-relaxed">{{ selectedCategory.description }}</p>
+        </div>
+    </div>
+
+    <!-- Rituals Grid -->
+    <div *ngIf="selectedCategory" class="mt-8 animate-fadeIn">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800 text-center">
+            Explore {{ selectedCategory.name }}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+            <div *ngFor="let ritual of selectedCategory.rituals; let i = index"
+                class="min-w-[180px] sm:min-w-[250px] max-w-[220px] sm:max-w-[300px] rounded-lg overflow-hidden shadow-md flex-shrink-0 snap-start"
+                [ngClass]="{'animate-slideUp': true}" [style.animation-delay]="i * 0.1 + 's'">
+
+                <div class="relative">
+                    <img [src]="ritual.image" [alt]="ritual.name"
+                        class="w-full h-52 md:h-64 object-cover transition-transform duration-700 hover:scale-110"
+                        style="object-position: center;" />
+
+                    <!-- Overlay Effect (Optional) -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    </div>
+                </div>
+
+                <div class="p-4 bg-white">
+                    <h4 class="text-lg md:text-xl font-medium text-center mb-2 md:mb-3">{{ ritual.name }}</h4>
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed">{{ ritual.description }}</p>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <!-- No Category Selected State -->
+    <div *ngIf="!selectedCategory" class="mt-10 text-center animate-fadeIn">
+        <div
+            class="max-w-3xl mx-auto bg-gradient-to-br from-white to-blue-50 p-8 rounded-xl shadow-md border border-gray-200">
+            <img src="assets/icons/om-symbol.svg" alt="Om Symbol" class="w-16 h-16 mx-auto mb-4 text-blue-600">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Explore Hindu Rituals & Traditions</h2>
+            <p class="text-gray-600 mb-6 max-w-xl mx-auto">
+                Discover the rich traditions and sacred ceremonies of Hinduism. Select a category above to explore
+                various
+                havans, pujas, festival celebrations, and more that have been practiced for thousands of years.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <div *ngFor="let category of categories; let i = index" (click)="selectCategory(category)"
+                    class="rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all duration-300 border border-gray-200 hover:border-blue-300"
+                    [ngClass]="{'animate-fadeIn': true}" [style.animation-delay]="i * 0.1 + 's'" tabindex="0"
+                    (keydown.enter)="selectCategory(category)" role="button">
+                    <div class="relative h-28">
+                        <img [src]="category.image" [alt]="category.name" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                            <h3 class="text-sm font-medium text-white p-3">{{ category.name }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-contact></app-contact>

@@ -1,0 +1,83 @@
+/* hero.component.css */
+:host {
+  display: block;
+}
+
+/* Use dynamic viewport height for better mobile experience */
+section {
+  height: 100dvh;
+  min-height: 500px;
+  /* Minimum height for very small screens */
+}
+
+/* Optimize background image for different devices */
+@media (max-width: 768px) {
+  section {
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+/* Improved loading animation */
+.loaded {
+  animation: contentLoad 0.8s ease-out forwards;
+}
+
+@keyframes contentLoad {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optimized bounce animation */
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(-50%, -25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translate(-50%, 0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Prevent text selection on interactive elements */
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* Responsive font optimization */
+@media (max-width: 640px) {
+  h1 {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.hero-section {
+  @apply relative min-h-[100dvh] bg-cover bg-center bg-no-repeat;
+  background-image: url("/assets/bg.jpg");
+}

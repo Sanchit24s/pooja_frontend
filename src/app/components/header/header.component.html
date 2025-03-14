@@ -1,0 +1,67 @@
+<header class="fixed top-0 z-50 w-full transition-all duration-300"
+    [ngClass]="isScrolled ? 'bg-white shadow-md' : 'bg-transparent'">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center relative">
+        <a href="/" class="flex items-center group z-10">
+            <!-- Reduced logo size -->
+            <img src="assets/logo.jpg" alt="Daivat Darshan" class="h-6 md:h-8  lg:ml-14 mr-2 rounded-full" />
+            <!-- Reduced font size -->
+            <span class="text-xs md:text-lg font-serif font-bold tracking-wide relative transition-colors duration-300"
+                [ngClass]="isScrolled ? 'text-[#722620]' : 'text-white'">
+                Daivat Darshan
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                    [ngClass]="isScrolled ? 'bg-[#722620]' : 'bg-white'"></span>
+            </span>
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="hidden peer" #menuToggle>
+        <label for="menu-toggle" class="md:hidden cursor-pointer p-2 rounded-md transition-colors z-10"
+            [ngClass]="isScrolled ? 'hover:bg-gray-100' : 'hover:bg-white/10'" aria-label="Toggle Menu">
+            <div class="relative w-6 h-5">
+                <span
+                    class="absolute top-0 left-0 w-6 h-0.5 transform transition-transform duration-300 peer-checked:rotate-45 peer-checked:translate-y-2"
+                    [ngClass]="isScrolled ? 'bg-gray-700' : 'bg-white'"></span>
+
+                <span class="absolute top-2 left-0 w-6 h-0.5 transition-opacity duration-300 peer-checked:opacity-0"
+                    [ngClass]="isScrolled ? 'bg-gray-700' : 'bg-white'"></span>
+
+                <span
+                    class="absolute top-4 left-0 w-6 h-0.5 transform transition-transform duration-300 peer-checked:-rotate-45 peer-checked:-translate-y-2"
+                    [ngClass]="isScrolled ? 'bg-gray-700' : 'bg-white'"></span>
+            </div>
+        </label>
+
+        <nav class="absolute top-full right-0 w-fit md:w-auto 
+                    invisible opacity-0 max-h-0 overflow-hidden 
+                    peer-checked:visible peer-checked:opacity-100 peer-checked:max-h-96 peer-checked:py-4
+                    flex flex-col items-center gap-3
+                    transition-all duration-300 ease-in-out
+                    md:visible md:opacity-100 md:max-h-full md:static md:flex md:flex-row md:gap-6 md:py-0 z-10 md:pr-24"
+            [ngClass]="isScrolled ? 'bg-white shadow-md md:shadow-none' : 'backdrop-blur-md bg-black/30 md:bg-transparent md:backdrop-blur-none'">
+
+            <a *ngFor="let item of navItems" [href]="item.link"
+                class="w-full md:w-auto px-4 py-2 font-medium rounded-md transition-colors relative group text-center md:text-left"
+                [ngClass]="isScrolled ? 
+                            'text-gray-700 hover:text-[#722620] hover:bg-gray-50 md:hover:bg-transparent' : 
+                            'text-white hover:text-white/80 hover:bg-white/10 md:hover:bg-transparent'"
+                [class.hidden]="item.id === 'book'">
+                {{item.label}}
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                    [ngClass]="isScrolled ? 'bg-[#722620]' : 'bg-white'"></span>
+            </a>
+            <a href="#book" class="w-full md:w-auto px-4 py-2 bg-[#722620] text-white font-medium rounded-md 
+                                hover:bg-[#5c1f1a] shadow-sm hover:shadow transition-all text-center
+                                transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-inner">
+                Book Now
+            </a>
+
+            <!-- Added login button (desktop only) -->
+            <a href="/login" class="hidden md:flex px-4 py-2 text-sm font-medium border rounded-md transition-colors"
+                [ngClass]="isScrolled ? 
+                'text-[#722620] border-[#722620] hover:bg-[#722620] hover:text-white' : 
+                'text-white border-white hover:bg-white hover:text-[#722620]'">
+                Login
+            </a>
+
+        </nav>
+    </div>
+</header>

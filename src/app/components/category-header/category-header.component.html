@@ -1,0 +1,47 @@
+<header class="fixed top-0 z-50 w-full bg-white shadow-md transition-all duration-300">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center relative">
+        <a href="/" class="flex items-center group z-10">
+            <img src="assets/logo.jpg" alt="Daivat Darshan" class="h-6 md:h-8 lg:ml-14 mr-2 rounded-full" />
+            <span class="text-xs md:text-lg font-serif font-bold tracking-wide text-[#722620] relative">
+                Daivat Darshan
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-[#722620]"></span>
+            </span>
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="hidden peer" #menuToggle>
+        <label for="menu-toggle"
+            class="md:hidden cursor-pointer p-2 rounded-md transition-colors z-10 hover:bg-gray-100"
+            aria-label="Toggle Menu">
+            <div class="relative w-6 h-5">
+                <span
+                    class="absolute top-0 left-0 w-6 h-0.5 bg-gray-700 transform transition-transform duration-300 peer-checked:rotate-45 peer-checked:translate-y-2"></span>
+                <span
+                    class="absolute top-2 left-0 w-6 h-0.5 bg-gray-700 transition-opacity duration-300 peer-checked:opacity-0"></span>
+                <span
+                    class="absolute top-4 left-0 w-6 h-0.5 bg-gray-700 transform transition-transform duration-300 peer-checked:-rotate-45 peer-checked:-translate-y-2"></span>
+            </div>
+        </label>
+
+        <nav
+            class="absolute top-full right-0 w-fit md:w-auto invisible opacity-0 max-h-0 overflow-hidden peer-checked:visible peer-checked:opacity-100 peer-checked:max-h-96 peer-checked:py-4
+                    flex flex-col items-center gap-3 transition-all duration-300 ease-in-out md:visible md:opacity-100 md:max-h-full md:static md:flex md:flex-row md:gap-6 md:py-0 z-10 md:pr-24 bg-white shadow-md md:shadow-none">
+            <a *ngFor="let item of navItems" [href]="item.link"
+                class="w-full md:w-auto px-4 py-2 font-semibold rounded-md transition-colors relative group text-center md:text-left text-gray-700 hover:text-[#722620] hover:bg-gray-50 md:hover:bg-transparent"
+                [class.hidden]="item.id === 'book'">
+                {{item.label}}
+                <span
+                    class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-[#722620]"></span>
+            </a>
+            <a href="#book"
+                class="w-full md:w-auto px-4 py-2 bg-[#722620] text-white font-medium rounded-md hover:bg-[#5c1f1a] shadow-sm hover:shadow transition-all text-center transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-inner">
+                Book Now
+            </a>
+
+            <a href="/login"
+                class="hidden md:flex px-4 py-2 text-sm font-medium border rounded-md transition-colors text-[#722620] border-[#722620] hover:bg-[#722620] hover:text-white">
+                Login
+            </a>
+        </nav>
+    </div>
+</header>
