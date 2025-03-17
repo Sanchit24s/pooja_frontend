@@ -44,7 +44,7 @@ import { PoojaTableComponent } from './admin/pooja-table/pooja-table.component';
     AdminHeaderComponent,
     SidebarComponent,
     DashboardComponent,
-    PoojaTableComponent
+    PoojaTableComponent,
   ],
   imports: [
     BrowserModule,

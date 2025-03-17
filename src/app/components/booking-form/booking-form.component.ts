@@ -30,7 +30,8 @@ export class BookingFormComponent {
       poojaType: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]],
-      samagriOption: ['', [Validators.required]]
+      samagriOption: ['', [Validators.required]],
+      query: [''],
     });
   }
 
