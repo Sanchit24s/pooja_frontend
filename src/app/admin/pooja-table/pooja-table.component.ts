@@ -13,6 +13,7 @@ interface Appointment {
   phoneNumber: string;
   samagriOption: string;
   bookingDate: string;
+  query: string;
 }
 
 @Component({
